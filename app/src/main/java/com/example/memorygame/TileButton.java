@@ -1,6 +1,9 @@
 package com.example.memorygame;
 
 import android.content.Context;
+import android.os.Handler;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 
 public class TileButton extends androidx.appcompat.widget.AppCompatButton {
 
@@ -23,11 +26,19 @@ public class TileButton extends androidx.appcompat.widget.AppCompatButton {
     }
 
     public void reveal() {
-        setText(tileContent);
+        Animation flipIn = AnimationUtils.loadAnimation(getContext(), R.anim.flip_in);
+        startAnimation(flipIn);
+        setText(getTileContent());
+        setEnabled(false);
     }
 
     public void hide() {
-        setText("❓");
+        Animation flipOut = AnimationUtils.loadAnimation(getContext(), R.anim.flip_out);
+        startAnimation(flipOut);
+        new Handler().postDelayed(() -> {
+            setText("❓");
+            setEnabled(true);
+        }, 300);
     }
 
     public boolean isMatched() {
