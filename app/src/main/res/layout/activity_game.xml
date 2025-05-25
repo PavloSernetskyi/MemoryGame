@@ -5,7 +5,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:padding="16dp">
+    android:padding="16dp"
+    android:background="@color/game_background">
 
     <TextView
         android:id="@+id/statusText"
@@ -13,7 +14,7 @@
         android:layout_height="wrap_content"
         android:text="Match the Tiles!"
         android:textSize="24sp"
-        android:layout_marginBottom="16dp"/>
+        android:layout_marginBottom="16dp" />
 
     <TextView
         android:id="@+id/attemptsText"
@@ -34,7 +35,7 @@
         android:rowCount="2"
         android:layout_gravity="center"
         android:padding="8dp"
-        android:background="@android:color/darker_gray"/>
+        android:background="@android:color/darker_gray" />
 
     <Button
         android:id="@+id/backToMenuBtn"
@@ -45,6 +46,6 @@
         android:layout_marginTop="16dp"
         android:backgroundTint="@color/purple_500"
         android:textColor="@android:color/white"
-        android:layout_gravity="center"/>
+        android:layout_gravity="center" />
 
 </LinearLayout>

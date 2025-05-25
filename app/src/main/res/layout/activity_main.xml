@@ -2,10 +2,12 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:gravity="center"
     android:padding="32dp"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:background="@color/game_background">
+
 
     <TextView
         android:id="@+id/welcomeText"
@@ -13,13 +15,19 @@
         android:layout_height="wrap_content"
         android:text="Welcome to the Memory Game!"
         android:textSize="22sp"
-        android:textColor="@android:color/black"
         android:textStyle="bold"
-        android:layout_marginTop="8dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        />
+        android:textColor="@android:color/black"
+        android:layout_marginTop="8dp" />
+
+    <ImageView
+        android:id="@+id/gameImage"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/memory_game"
+        android:contentDescription="Game Image" />
+
+
 
     <Button
         android:id="@+id/startGameBtn"
@@ -47,5 +55,4 @@
         android:layout_gravity="center_horizontal"
         android:backgroundTint="@color/purple_500"
         android:textColor="@android:color/white" />
-
 </LinearLayout>
