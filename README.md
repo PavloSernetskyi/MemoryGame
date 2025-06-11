@@ -7,11 +7,11 @@
 ### Home Screen 
 ![image](https://github.com/user-attachments/assets/2437b9e5-f0e2-4cf1-9c44-293f95f9690b)
 
-### Scoreboard
-![image](https://github.com/user-attachments/assets/f27bc916-4b54-4f76-8a62-62b7df0d2043)
-
 ### Gameplay
 ![image](https://github.com/user-attachments/assets/c1b1ad7a-9a51-440b-b00e-c61c81596d5c)
+
+### Scoreboard
+![image](https://github.com/user-attachments/assets/f27bc916-4b54-4f76-8a62-62b7df0d2043)
 
 
 ##  Features
