@@ -4,7 +4,15 @@
 **Memory Game** is a fun and interactive Android app designed to challenge and improve your memory. The goal is to match pairs of tiles by flipping them. As players successfully complete levels, the game dynamically increases difficulty by introducing more tiles—starting with 6, then progressing to 10 and 14. The app features engaging animations, a scoreboard, personalized user input, and a visually appealing interface.
 
 ##  Sample Screenshots
-![home-page](![image](https://github.com/user-attachments/assets/2437b9e5-f0e2-4cf1-9c44-293f95f9690b)
+### Home Screen 
+![image](https://github.com/user-attachments/assets/2437b9e5-f0e2-4cf1-9c44-293f95f9690b)
+
+### Scoreboard
+![image](https://github.com/user-attachments/assets/f27bc916-4b54-4f76-8a62-62b7df0d2043)
+
+### Gameplay
+![image](https://github.com/user-attachments/assets/c1b1ad7a-9a51-440b-b00e-c61c81596d5c)
+
 
 ##  Features
 - Flip-to-match tile memory gameplay
