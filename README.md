@@ -10,10 +10,6 @@
 ### Gameplay
 ![image](https://github.com/user-attachments/assets/c1b1ad7a-9a51-440b-b00e-c61c81596d5c)
 
-### Scoreboard
-![image](https://github.com/user-attachments/assets/f27bc916-4b54-4f76-8a62-62b7df0d2043)
-
-
 ##  Features
 - Flip-to-match tile memory gameplay
 - Dynamic difficulty progression (6 ➝ 10 ➝ 14 tiles)
