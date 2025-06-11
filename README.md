@@ -71,4 +71,4 @@
 - [LinkedIn](https://www.linkedin.com/in/pavlo-sernetskyi)
 
 ---
- This project showcases skills in Android development, user interface design, animation, Java programming, and app lifecycle management.
+ This project showcases skills in Android development with Java, user interface design, animation, and app lifecycle management.
