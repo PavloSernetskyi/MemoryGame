@@ -12,10 +12,16 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Collections;
 import java.util.ArrayList;
+import java.util.List;
 
 public class GameActivity extends AppCompatActivity {
 
     private GridLayout tileGrid;
+    private int level = 1;
+    private final int[] TILE_COUNTS = {3, 5, 7, 9, 12};
+    private final ArrayList<String> allEmojis = new ArrayList<>(List.of(
+            "🐶", "🐱", "🐵", "🦁", "🐸", "🐼", "🐷", "🐨", "🐙", "🦊", "🐰", "🐻"
+    ));
     private TextView statusText;
     private String playerName;
     private TileButton firstTile = null;
@@ -57,19 +63,29 @@ public class GameActivity extends AppCompatActivity {
         setupGameTiles();
     }
     private void setupGameTiles() {
-        ArrayList<String> tileContent = new ArrayList<>();
-        tileContent.add("🐶");
-        tileContent.add("🐱");
-        tileContent.add("🐵");
-        tileContent.add("🐶");
-        tileContent.add("🐱");
-        tileContent.add("🐵");
+        tileGrid.removeAllViews(); // clear previous level tiles
+
+        int pairCount = TILE_COUNTS[Math.min(level - 1, TILE_COUNTS.length - 1)];
+        totalPairs = pairCount;
+
+        ArrayList<String> tileContent = new ArrayList<>(allEmojis.subList(0, pairCount));
+        tileContent.addAll(new ArrayList<>(tileContent)); // make pairs
         Collections.shuffle(tileContent);
 
-        tileGrid.removeAllViews(); // clear any old tiles
+        matchedPairs = 0;
+        attemptsLeft = 4 + (level - 1) * 2;
+        matchedPairs = 0;
 
-        int tileSize = 200; // in pixels
-        for (int i = 0; i < 6; i++) {
+        updateAttemptsText();
+        statusText.setText("🧠 Level " + level + " - Match the Tiles!");
+
+        // Dynamically calculate grid columns
+        int totalTiles = pairCount * 2;
+        int columns = (int) Math.ceil(Math.sqrt(totalTiles));
+        tileGrid.setColumnCount(columns);
+
+        int tileSize = 200;
+        for (int i = 0; i < tileContent.size(); i++) {
             TileButton tile = new TileButton(this);
             tile.setTileContent(tileContent.get(i));
             tile.setTextSize(32f);
@@ -84,6 +100,10 @@ public class GameActivity extends AppCompatActivity {
             tile.setOnClickListener(view -> handleTileClick(tile));
             tileGrid.addView(tile);
         }
+    }
+
+    private void updateAttemptsText() {
+        attemptsText.setText("Attempts Left: " + attemptsLeft);
     }
 
     private void handleTileClick(TileButton clickedTile) {
@@ -105,10 +125,19 @@ public class GameActivity extends AppCompatActivity {
                 secondTile = null;
 
                 if (matchedPairs == totalPairs) {
-                    statusText.setText("🎉 You win!");
+                    statusText.setText("🎉 Level " + level + " Completed!");
                     wins++;
-                    dbHandler.addOrUpdateGameRecord(playerName, 1, 0, 1); // +1 win, +0 loss, +1 game
-                    backToMenuBtn.setVisibility(View.VISIBLE);
+                    dbHandler.addOrUpdateGameRecord(playerName, 1, 0, 1);
+
+                    new Handler().postDelayed(() -> {
+                        level++;
+                        if (level <= TILE_COUNTS.length) {
+                            setupGameTiles(); // move to next level silently
+                        } else {
+                            statusText.setText("🏆 You completed all levels!");
+                            backToMenuBtn.setVisibility(View.VISIBLE);
+                        }
+                    }, 2000);
                 }
             } else {
                 // Wrong guess — reduce attempts
