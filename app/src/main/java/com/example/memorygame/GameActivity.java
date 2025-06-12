@@ -81,8 +81,12 @@ public class GameActivity extends AppCompatActivity {
 
         // Dynamically calculate grid columns
         int totalTiles = pairCount * 2;
-        int columns = (int) Math.ceil(Math.sqrt(totalTiles));
-        tileGrid.setColumnCount(columns);
+//        int columns = (int) Math.ceil(Math.sqrt(totalTiles));
+        //tileGrid.setColumnCount(columns);
+        int[] gridSize = getBestGridSize(totalTiles);
+        tileGrid.setColumnCount(gridSize[0]);
+        tileGrid.setRowCount(gridSize[1]);
+
 
         int tileSize = 200;
         for (int i = 0; i < tileContent.size(); i++) {
@@ -163,6 +167,22 @@ public class GameActivity extends AppCompatActivity {
         }
     }
 
+    private int[] getBestGridSize(int totalTiles) {
+        int bestCols = 1;
+        int bestRows = totalTiles;
+
+        for (int cols = 1; cols <= totalTiles; cols++) {
+            if (totalTiles % cols == 0) {
+                int rows = totalTiles / cols;
+                if (Math.abs(rows - cols) < Math.abs(bestRows - bestCols)) {
+                    bestCols = cols;
+                    bestRows = rows;
+                }
+            }
+        }
+
+        return new int[]{bestCols, bestRows};
+    }
     private void disableAllTiles() {
         for (int i = 0; i < tileGrid.getChildCount(); i++) {
             View view = tileGrid.getChildAt(i);
